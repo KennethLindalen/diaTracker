@@ -5,7 +5,7 @@
 		- [ ] Må gjøres om til for enkel bruker når auth er implementert
 	- [x] POST ny
 	- [x] DELETE per _ID
-	- []  UPDATE per _ID 
+	- [ ]  UPDATE per _ID 
 - [ ] Blodsukker Modell
   - [x] Blodsukker
   - [x] Insulin

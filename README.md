@@ -10,6 +10,7 @@
   - [x] Blodsukker
   - [x] Insulin
   - [x] Mat
+  - [x] Dato og klokkeslett opprettet
   - [ ] Bruker _Id
 - [ ] Auth
   - [ ] JWT

@@ -2,19 +2,25 @@
 - [x] DB Oppsett
 - [ ] Blodsukker route
 	- [x] GET Alle
-		- [ ] Må gjøres om til for enkel bruker når auth er implementert
+		- [ ] Må gjøres om til for hver enkel bruker når auth er implementert
 	- [x] POST ny
 	- [x] DELETE per _ID
-	- [ ]  UPDATE per _ID 
+	- [ ] UPDATE per _ID 
 - [ ] Blodsukker Modell
   - [x] Blodsukker
   - [x] Insulin
-  - [x] Mat
+  - [ ] Mat
   - [x] Dato og klokkeslett opprettet
   - [ ] Bruker _Id
 - [ ] Auth
-  - [ ] JWT
   - [ ] Bruker model (epost & passord)
+  - [ ] Bruker Route
+		- [ ] Logg inn
+			- [ ] Sammenlignde token med server
+		- [ ] Logg ut
+		- [ ] Registrer deg
+			- [ ] JWT generering
+	- [ ] Bcrypt implementering
 # Client
 - [ ] Main info side
 	- [ ] Logg inn
@@ -22,10 +28,13 @@
 	- [x] Generell info om diaTracker
 	- [x] BS? BS.
 - [ ] Oversikt side
-
 	- [ ] Gjennomsnitt per mnd og 3 mnd
 	- [ ] Komponenter
-		- [ ] Blodsukkerliste
+		- [x] Blodsukkerliste
 			- [ ] Graf (per. dag/mnd)
-			- [ ] Table (per. dag/mnd)
+			- [x] Table (per. dag/mnd)
+			- [ ] Statisk data
+			- [ ] Redux integrering
 		- [ ] Graf for blodsukker
+			- [ ] Statisk data
+			- [ ] Redux integrering

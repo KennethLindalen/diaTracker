@@ -22,7 +22,10 @@
 	- [x] Generell info om diaTracker
 	- [x] BS? BS.
 - [ ] Oversikt side
-	- [ ] Graf (per. dag/mnd)
-	- [ ] Table (per. dag/mnd)
+
 	- [ ] Gjennomsnitt per mnd og 3 mnd
-	
+	- [ ] Komponenter
+		- [ ] Blodsukkerliste
+			- [ ] Graf (per. dag/mnd)
+			- [ ] Table (per. dag/mnd)
+		- [ ] Graf for blodsukker

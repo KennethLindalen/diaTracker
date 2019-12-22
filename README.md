@@ -24,6 +24,7 @@
 # Client
 - [ ] Main info side
 	- [ ] Logg inn
+		- [ ] Modal component
 	- [ ] Registrer
 	- [x] Generell info om diaTracker
 	- [x] BS? BS.
@@ -33,7 +34,7 @@
 		- [x] Blodsukkerliste
 			- [ ] Graf (per. dag/mnd)
 			- [x] Table (per. dag/mnd)
-			- [ ] Statisk data
+			- [x] Statisk data
 			- [ ] Redux integrering
 		- [ ] Graf for blodsukker
 			- [ ] Statisk data

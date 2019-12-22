@@ -3,111 +3,107 @@ import React, { Component } from 'react';
 import { 
     Container,
     Table,
-    Button
+    Button,
+    Row, Col
 } from 'reactstrap';
-
+import Calendar from 'react-calendar'
 import {
     CSSTransition,
-    TransitionGroup
 } from 'react-transition-group';
-
+import BlodsukkerGraf from './BlodsukkerGraf';
 import uuid from 'uuid';
+import { connect } from 'react-redux';
+import { getBlodsukker} from '../actions/blodsukkerAction.js';
+import PropTypes from 'prop-types';
+
 
 class BlodsukkerListe extends Component {
-    state = {
-        BlodsukkerVerdier: [
-        {
-            id: uuid(),
-            blodsukker: '3.1',
-            insulin: '5',
-        },
-        {
-            id: uuid(),
-            blodsukker: '12.1',
-            insulin: '8',
-        },
-        {
-            id: uuid(),
-            blodsukker: '14.1',
-            insulin: '9',
-        },
-        {
-            id: uuid(),
-            blodsukker: '8.1',
-            insulin: '2',
-        },
-        {
-            id: uuid(),
-            blodsukker: '66.1',
-            insulin: '14',
-        },
-    ]
-    };
+
+    static propTypes = {
+        getBlodsukker: PropTypes.func.isRequired,
+        blodsukker: PropTypes.object.isRequired
+    }
+    
+
+    componentDidMount() {
+        this.props.getBlodsukker();
+    }
 
     render(){
-        const { blodsukkerState } = this.state;
+        const BlodsukkerState = this.props.blodsukkerVerdier;
         return(
-            <Container>
-                
-                <Table striped>
-                    <thead>
-                        <tr>
-                        <   th></th>
-                            <th>Blodsukker</th>
-                            <th>Insulin</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* HVA FAEN BETYR DETTE?! */}
-                        {this.state.BlodsukkerVerdier.map(({ id, blodsukker, insulin }) => (
-                            <CSSTransition key={id} timeout={500} classNames="fade">
-                                <tr>
-                                <td>
-                                    <Button 
-                                        className="remove-btn"
-                                        color="danger"
-                                        size="sm"
-                                        onClick= {
-                                            () => {
-                                                this.setState( state => ({
-                                                    BlodsukkerVerdier: state.BlodsukkerVerdier.filter(blodsukker => blodsukker.id !== id)
-                                                }))
+            <Container className="clearfix">
+                <Row>
+                    <Col xs="4">
+                        <Calendar></Calendar>
+                    </Col>
+                    <Col>
+                    <Table striped>
+                        <thead>
+                            <tr>
+                                <th>Blodsukker</th>
+                                <th>Insulin</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.BlodsukkerVerdier.map(({ id, blodsukker, insulin }) => (
+                                <CSSTransition key={id} timeout={500} classNames="fade">
+                                    <tr>
+                                    <td>
+                                        {blodsukker}
+                                    </td>
+                                    <td>
+                                        {insulin + " enh"}
+                                    </td>
+                                    <td>
+                                        <Button 
+                                            className="remove-btn float-right"
+                                            color="danger"
+                                            size="sm"
+                                            onClick= {
+                                                () => {
+                                                    this.setState( state => ({
+                                                        BlodsukkerVerdier: state.BlodsukkerVerdier.filter(blodsukker => blodsukker.id !== id)
+                                                    }))
+                                                }
                                             }
-                                        }
-                                    >
-                                        &times;
-                                    </Button>
-                                </td>
-                                <td>
-                                    {blodsukker}
-                                </td>
-                                <td>
-                                    {insulin + " enh"}
-                                </td>
+                                        >
+                                            &times;
+                                        </Button>
+                                    </td>
 
-                                </tr>
-                            </CSSTransition>
-                        ))}
-                    </tbody>
-                </Table>
-                <Button
-                color="dark"
-                style={{marginBottom: '2rem'}}
-                onClick={()=>{
-                    const blodsukker = prompt('Oppgi nytt blodsukker');
-                    const insulin = prompt('Oppgi insulin mengde')
-                    if(blodsukker){
-                        this.setState(state =>({
-                            BlodsukkerVerdier: [...state.BlodsukkerVerdier, { id: uuid(), blodsukker, insulin}]
-                        }))
-                    }
-                }}
-                >
-                    Legg til nye verdier
-                </Button>
+                                    </tr>
+                                </CSSTransition>
+                            ))}
+                        </tbody>
+                    </Table>
+                        <Button
+                            size="sm"
+                            color="dark"
+                            style={{marginBottom: '2rem'}}
+                            className="float-right"
+                                    onClick={()=>{
+                                    const blodsukker = prompt('Oppgi nytt blodsukker');
+                                    const insulin = prompt('Oppgi insulin mengde')
+                                    if(blodsukker){
+                                        this.setState(state =>({
+                                            BlodsukkerVerdier: [...state.BlodsukkerVerdier, { id: uuid(), blodsukker, insulin}]
+                                        }))}
+                                    }}>
+                            Legg til nye verdier
+                        </Button>
+                    </Col>
+                </Row>
+                <BlodsukkerGraf></BlodsukkerGraf>
             </Container>
         )
     }
 }
 
-export default BlodsukkerListe;
+
+const mapStateToProps = state => ({
+    blodsukker: state.blodsukkerVerdier
+}) 
+
+export default connect(mapStateToProps, { getBlodsukker })(BlodsukkerListe);

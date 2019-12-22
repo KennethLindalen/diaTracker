@@ -15,11 +15,11 @@
 - [ ] Auth
   - [ ] Bruker model (epost & passord)
   - [ ] Bruker Route
-		- [ ] Logg inn
-			- [ ] Sammenlignde token med server
-		- [ ] Logg ut
-		- [ ] Registrer deg
-			- [ ] JWT generering
+	- [ ] Logg inn
+		- [ ] Sammenlignde token med server
+	- [ ] Logg ut
+	- [ ] Registrer deg
+		- [ ] JWT generering
 	- [ ] Bcrypt implementering
 # Client
 - [ ] Main info side
